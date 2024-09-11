@@ -37,7 +37,7 @@ const Form = ({ setResults }) => {
       quantity: '50 kg per hectare'
     };
     setResults(recommendations);
-    navigate('/results'); // Navigate to results page
+    navigate('/results?serviceId=service1', { state: { recommendations } });
   };
 
   // Define available crop types
@@ -355,13 +355,13 @@ const Form = ({ setResults }) => {
 
         <div className="flex justify-center">
           <Link
-            to={`/results/${serviceId}`}
+            to={`/results?serviceId=${serviceId}`}
             className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-500"
           >
             View Results
           </Link>
         </div>
-        
+
       </form>
     </div>
   );

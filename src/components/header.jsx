@@ -13,7 +13,7 @@ const Header = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [charIndex, setCharIndex] = useState(0);
   const typingSpeed = 50; // Speed for typing effect
-  const delay = 500; // Time before switching texts
+  const delay = 1000; // Time before switching texts
 
   useEffect(() => {
     let typingInterval;
