@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import MapComponent from './mapComponent'; // Import the MapComponent
+import { Link } from 'react-router-dom';
 
 const Form = ({ setResults }) => {
   const location = useLocation();
@@ -16,6 +17,7 @@ const Form = ({ setResults }) => {
   const [moisture, setMoisture] = useState('');
   const [cropType, setCropType] = useState('');
   const [soilType, setSoilType] = useState('');
+  const [fertilizerName, setFertilizerName] = useState('');
   const [locationData, setLocationData] = useState({ lat: '', lng: '' }); // New state for location data
 
   const handleSubmit = (e) => {
@@ -28,6 +30,7 @@ const Form = ({ setResults }) => {
       cropType,
       soilType,
       moisture,
+      fertilizerName,
       latitude: locationData.lat, // Include latitude in recommendations
       longitude: locationData.lng, // Include longitude in recommendations
       fertilizer: 'Recommended Fertilizer A',
@@ -44,17 +47,46 @@ const Form = ({ setResults }) => {
     'Rice',
     'Soybean',
     'Barley',
-    'Oats'
+    'Maze',
+    'Jute',
+    'Cotton',
+    'Coconut',
+    'Papaya',
+    'Orange',
+    'Apple',
+    'Muskmelon',
+    'Watermelon',
+    'Grapes',
+    'Mango',
+    'Banana',
+    'Pomegranate',
+    'Lentil',
+    'Mungbean',
+    'Mothbeans',
+    'Pigeonpeas',
+    'Kidneybeans',
+    'Chickpea',
+    'Coffee',
   ];
 
   // Define available soil types
   const soilTypes = [
-    'Clay',
+    'Clayey',
     'Sandy',
     'Loamy',
-    'Peaty',
-    'Saline',
-    'Silt'
+    'Red',
+    'Black',
+  ];
+
+  const fertilizerNames = [
+    'Urea',
+    '10-26-26',
+    '14-35-14',
+    '17-17-17',
+    '20-20',
+    '28-28',
+    'DAP',
+    '28-28',
   ];
 
   return (
@@ -289,17 +321,6 @@ const Form = ({ setResults }) => {
                   placeholder="e.g., 20 kg/ha" 
                 />
               </div>
-
-              <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2">Soil Moisture</label>
-                <input 
-                  type="text" 
-                  value={moisture}
-                  onChange={(e) => setMoisture(e.target.value)}
-                  className="border rounded w-full py-2 px-3 text-gray-700"
-                  placeholder="e.g., 10, 20 " 
-                />
-              </div>
             </div>
 
             <div className="mb-8">
@@ -316,52 +337,31 @@ const Form = ({ setResults }) => {
               </select>
             </div>
 
-            <div className="mb-4">
-              <label className="block text-gray-700 text-lg underline font-bold mb-2">Soil Type</label>
+            <div className="mb-8">
+              <label className="block text-gray-700 text-lg font-bold mb-2 underline">Fertilizer Name</label>
               <select 
-                value={soilType}
-                onChange={(e) => setSoilType(e.target.value)}
+                value={fertilizerName}
+                onChange={(e) => setFertilizerName(e.target.value)}
                 className="border rounded w-full py-2 px-3 text-gray-700"
               >
-                <option value="" disabled>Select a soil type</option>
-                {soilTypes.map((type, index) => (
+                <option value="" disabled>Select a fertilizer</option>
+                {fertilizerNames.map((type, index) => (
                   <option key={index} value={type}>{type}</option>
                 ))}
               </select>
-            </div>
-
-            <div className="mb-8">
-              <MapComponent onLocationChange={(loc) => setLocationData(loc)} />
-            </div>
-
-            {/* Fields for Latitude and Longitude */}
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">Latitude</label>
-              <input
-                type="text"
-                value={locationData.lat}
-                readOnly
-                className="border rounded w-full py-2 px-3 text-gray-700"
-                placeholder="Latitude"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">Longitude</label>
-              <input
-                type="text"
-                value={locationData.lng}
-                readOnly
-                className="border rounded w-full py-2 px-3 text-gray-700"
-                placeholder="Longitude"
-              />
-            </div>
+            </div>          
           </>
         )}
 
-        <button type="submit" className="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-500">
-          Get Results
-        </button>
+        <div className="flex justify-center">
+          <Link
+            to={`/results/${serviceId}`}
+            className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-500"
+          >
+            View Results
+          </Link>
+        </div>
+        
       </form>
     </div>
   );

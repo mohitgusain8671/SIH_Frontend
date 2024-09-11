@@ -14,8 +14,6 @@ const AboutUsPage = () => {
           backgroundRepeat: 'no-repeat'
         }}
         >      
-        {/* <h1 className="text-4xl font-bold mb-4">About Us</h1> */}
-        {/* <p className="text-lg">Discover who we are and what we do.</p> */}
       </section>
 
       {/* About Us Details */}
@@ -36,12 +34,13 @@ const AboutUsPage = () => {
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-8">Meet Our Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
             {/* Team Member 1 */}
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <img
                 src="/src/assets/images/vikas.png"
                 alt="Team Member"
-                className="w-34 h-32 rounded-full mx-auto mb-4"
+                className="w-32 h-32 rounded-full mx-auto mb-4"
               />
               <h3 className="text-xl font-bold mb-2">Vikas</h3>
               <p className="text-gray-700">Machine Learning and Data Science Expert</p>
@@ -66,6 +65,39 @@ const AboutUsPage = () => {
                 className="w-32 h-32 rounded-full mx-auto mb-4"
               />
               <h3 className="text-xl font-bold mb-2">Mohit Gusain</h3>
+              <p className="text-gray-700">Full Stack Web Developer</p>
+            </div>
+
+            {/* Team Member 4 */}
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <img
+                src="/src/assets/images/aryaman.png"
+                alt="Team Member"
+                className="w-32 h-32 rounded-full mx-auto mb-4"
+              />
+              <h3 className="text-xl font-bold mb-2">Aryaman Tandon</h3>
+              <p className="text-gray-700">Full Stack Web Developer</p>
+            </div>
+
+            {/* Team Member 5 */}
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <img
+                src="/src/assets/images/vani.jpg"
+                alt="Team Member"
+                className="w-32 h-32 rounded-full mx-auto mb-4"
+              />
+              <h3 className="text-xl font-bold mb-2">Vani Rastogi</h3>
+              <p className="text-gray-700">Full Stack Web Developer</p>
+            </div>
+
+            {/* Team Member 6 */}
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <img
+                src="/src/assets/images/abhishek.png"
+                alt="Team Member"
+                className="w-32 h-32 rounded-full mx-auto mb-4"
+              />
+              <h3 className="text-xl font-bold mb-2">Kumar Abhishek</h3>
               <p className="text-gray-700">Full Stack Web Developer</p>
             </div>
           </div>
