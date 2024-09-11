@@ -37,7 +37,7 @@ function App() {
             <Route path="/service/:serviceId" element={<ServiceDetail />} />
 
             <Route path="/form" element={<Form setResults={setResults} />} />
-            <Route path="/results/:serviceId" element={<Results />} />
+            <Route path="/results" element={<Results results={results} />} />
           </Routes>
         </main>
         <Footer />

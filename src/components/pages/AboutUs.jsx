@@ -43,7 +43,7 @@ const AboutUsPage = () => {
                 className="w-32 h-32 rounded-full mx-auto mb-4"
               />
               <h3 className="text-xl font-bold mb-2">Vikas</h3>
-              <p className="text-gray-700">Machine Learning and Data Science Expert</p>
+              <p className="text-gray-700">Machine Learning and Data Science</p>
             </div>
 
             {/* Team Member 2 */}
