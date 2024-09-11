@@ -23,11 +23,11 @@ const ContactUsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-12">
+    <div className="min-h-screen bg-gray-100">
       {/* Hero Section */}
-      <section className="bg-indigo-600 text-white py-16 text-center">
+      <section className="bg-gray-100 text-black py-16 text-center">
         <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-        <p className="text-lg">We'd love to hear from you. Reach out to us using the form below.</p>
+        <p className="text-lg">We would love to hear from you. Reach out to us using the form below.</p>
       </section>
 
       {/* Contact Form Section */}
@@ -96,9 +96,9 @@ const ContactUsPage = () => {
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Our Contact Information</h2>
           <p className="text-gray-700 mb-4">Feel free to reach out to us through the following methods:</p>
-          <p className="text-gray-700 mb-2">📍 1234 Elm Street, Springfield, IL 62704</p>
+          <p className="text-gray-700 mb-2">📍 1234, New Delhi - 110051 , Delhi, India</p>
           <p className="text-gray-700 mb-2">📞 (123) 456-7890</p>
-          <p className="text-gray-700 mb-2">✉️ contact@example.com</p>
+          <p className="text-gray-700 mb-2">✉️ contact@agroMinds.com</p>
         </div>
       </section>
     </div>

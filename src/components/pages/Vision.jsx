@@ -2,11 +2,18 @@ import React from 'react';
 
 const VisionPage = () => {
   return (
-    <div className="min-h-screen bg-gray-100 py-12">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-blue-600 text-white py-16 text-center">
-        <h1 className="text-4xl font-bold mb-4">Our Vision</h1>
-        <p className="text-lg">Shaping a better future through innovation and dedication.</p>
+      <section
+        className="text-white py-40 text-center"
+        style={{
+          backgroundImage: 'url("https://th.bing.com/th/id/OIP.-zlBAXGpdIz3-iqNIyDIVwAAAA?rs=1&pid=ImgDetMain")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+        >      
+       
       </section>
 
       {/* Vision Details */}

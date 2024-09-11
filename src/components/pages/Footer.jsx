@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
@@ -12,7 +12,7 @@ const Footer = () => {
                         <h2 className="text-xl font-bold mb-4">AgroMinds</h2>
                         <p className="mb-4">1234, New Delhi - 110051 , Delhi, India</p>
                         <p className="mb-4">Phone: (123) 456-7890</p>
-                        <p>Email: <a href="mailto:info@agroMinds.com" className="text-green-400 hover:underline">info@company.com</a></p>
+                        <p>Email: <a href="mailto:info@agroMinds.com" className="text-green-400 hover:underline">info@agroMinds.com</a></p>
                     </div>
 
                     {/* Quick Links */}

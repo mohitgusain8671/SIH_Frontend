@@ -2,11 +2,20 @@ import React from 'react';
 
 const AboutUsPage = () => {
   return (
-    <div className="min-h-screen bg-gray-100 py-12">
+    <div className="min-h-screen bg-gray-100 py-4">
+
       {/* Hero Section */}
-      <section className="bg-green-600 text-white py-16 text-center">
-        <h1 className="text-4xl font-bold mb-4">About Us</h1>
-        <p className="text-lg">Discover who we are and what we do.</p>
+      <section
+        className="bg-green-600 text-white py-20 text-center"
+        style={{
+          backgroundImage: 'url("https://static.vecteezy.com/system/resources/previews/007/931/694/non_2x/about-us-button-about-us-text-template-for-website-about-us-icon-flat-style-vector.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+        >      
+        {/* <h1 className="text-4xl font-bold mb-4">About Us</h1> */}
+        {/* <p className="text-lg">Discover who we are and what we do.</p> */}
       </section>
 
       {/* About Us Details */}
@@ -30,34 +39,34 @@ const AboutUsPage = () => {
             {/* Team Member 1 */}
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <img
-                src="https://via.placeholder.com/150"
+                src="/src/assets/images/vikas.png"
                 alt="Team Member"
-                className="w-32 h-32 rounded-full mx-auto mb-4"
+                className="w-34 h-32 rounded-full mx-auto mb-4"
               />
-              <h3 className="text-xl font-bold mb-2">John Doe</h3>
-              <p className="text-gray-700">Founder & CEO</p>
+              <h3 className="text-xl font-bold mb-2">Vikas</h3>
+              <p className="text-gray-700">Machine Learning and Data Science Expert</p>
             </div>
 
             {/* Team Member 2 */}
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <img
-                src="https://via.placeholder.com/150"
+                src="/src/assets/images/sahil.jpg"
                 alt="Team Member"
                 className="w-32 h-32 rounded-full mx-auto mb-4"
               />
-              <h3 className="text-xl font-bold mb-2">Jane Smith</h3>
-              <p className="text-gray-700">Chief Operating Officer</p>
+              <h3 className="text-xl font-bold mb-2">Sahil Chauhan</h3>
+              <p className="text-gray-700">Team Leader <br/> Full Stack Web Developer </p>
             </div>
 
             {/* Team Member 3 */}
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <img
-                src="https://via.placeholder.com/150"
+                src="/src/assets/images/mohit.jpg"
                 alt="Team Member"
                 className="w-32 h-32 rounded-full mx-auto mb-4"
               />
-              <h3 className="text-xl font-bold mb-2">Alice Johnson</h3>
-              <p className="text-gray-700">Chief Technology Officer</p>
+              <h3 className="text-xl font-bold mb-2">Mohit Gusain</h3>
+              <p className="text-gray-700">Full Stack Web Developer</p>
             </div>
           </div>
         </div>

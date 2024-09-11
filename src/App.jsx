@@ -1,8 +1,8 @@
 import  { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Form from './components/Form';
-import Results from './components/Results';
+import Header from './components/header';
+import Form from './components/form';
+import Results from './components/results';
 // import Footer from './components/Footer';
 import Navbar from './components/HomePage/navbar';
 
