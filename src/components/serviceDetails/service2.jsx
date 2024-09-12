@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 // import { Form } from 'react-router-dom';
+// import ServiceDetail from './service1';
 
 const serviceData = {
   service1: {
@@ -41,9 +42,9 @@ const serviceData = {
   },
 };
 
-const Service1 = () => {
-  // const { serviceId } = useParams();
-  const service = serviceData["service1"];
+const Service2 = () => {
+//   const { serviceId } = useParams();
+  const service = serviceData["service2"];
 
   if (!service) {
     return <p>Service not found.</p>;
@@ -67,7 +68,7 @@ const Service1 = () => {
           <p className="text-lg mb-4">{service.description}</p>
           <p className="text-base mb-7">{service.details}</p>
           <Link
-            to={`/service1Form`}
+            to={`/service2Form`}
             className="mt-6 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-500 transition-colors"
           >
             Check it out
@@ -78,4 +79,4 @@ const Service1 = () => {
   );
 };
 
-export default Service1;
+export default Service2;

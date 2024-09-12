@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
-const Results = ({ results: propResults }) => {
+const Results = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const serviceId = query.get('serviceId');
+  const [results, setResults] = useState(null);
 
-  // If results are passed via props, use them; otherwise, try to get them from location.state
-  const results = propResults || location.state?.recommendations;
+  useEffect(() => {
+    console.log("Location state:", location.state);
+    if (location.state && location.state.results) {
+      setResults(location.state.results);
+    }
+  }, [location.state]);
 
-  // Helper function to display either the result value or a placeholder
   const displayField = (value, placeholder = 'Data not available') => value || placeholder;
 
   return (
@@ -18,46 +22,37 @@ const Results = ({ results: propResults }) => {
       <div className="w-full max-w-lg bg-white p-8 shadow-lg rounded-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Your Desired Results are Here !!</h2>
 
-        {serviceId === 'service1' && (
+        {serviceId === 'service1' && results && (
           <div>
             <h3 className="text-xl font-bold mb-2 underline">Crop Recommendation Results</h3>
-
-            {/* Displaying recommended crop details */}
             <div className="mb-4">
               <img
-                src={results?.croprDetails?.image || 'https://th.bing.com/th/id/OIP.leUcEChYZIbEsnNYuhNvmAHaE8?rs=1&pid=ImgDetMain'}
-                alt={results?.croprDetails?.name || 'Default Crop'}
+                src={ 'https://th.bing.com/th/id/OIP.kT5qPhJt1MQS1DIXbd2ZMgHaE7?rs=1&pid=ImgDetMain'}
+                alt={results?.cropDetails?.name || 'Default Crop'}
                 className="w-full h-40 object-cover rounded-md mb-2"
               />
-              <p><strong>Recommended Crop:</strong> {displayField(results?.croprDetails?.name)}</p>
-              <p><strong>Crop ID:</strong> {displayField(results?.croprDetails?.cropID)}</p>
+              <p><strong>Recommended Crop:</strong> {displayField(results?.cropDetails?.name)}</p>
+              <p><strong>Crop ID:</strong> {displayField(results?.cropDetails?.cropID)}</p>
             </div>
-
-            {/* Displaying crop's optimal conditions */}
             <h4 className="font-bold mb-2">Optimal Conditions:</h4>
-            <p><strong>Optimal pH:</strong> {displayField(results?.croprDetails?.optimal_ph_min)} - {displayField(results?.croprDetails?.optimal_ph_max)}</p>
-            <p><strong>Optimal Temperature:</strong> {displayField(results?.croprDetails?.optimal_temp_min)}°C - {displayField(results?.croprDetails?.optimal_temp_max)}°C</p>
-            <p><strong>Optimal Moisture:</strong> {displayField(results?.croprDetails?.optimal_moisture_min)}% - {displayField(results?.croprDetails?.optimal_moisture_max)}%</p>
-
-            {/* Displaying recommended NPK levels */}
+            <p><strong>Optimal pH:</strong> {displayField(results?.cropDetails?.optimal_ph_min)} - {displayField(results?.cropDetails?.optimal_ph_max)}</p>
+            <p><strong>Optimal Temperature:</strong> {displayField(results?.cropDetails?.optimal_temp_min)}°C - {displayField(results?.cropDetails?.optimal_temp_max)}°C</p>
+            <p><strong>Optimal Moisture:</strong> {displayField(results?.cropDetails?.optimal_moisture_min)}% - {displayField(results?.cropDetails?.optimal_moisture_max)}%</p>
             <h4 className="font-bold mt-4 mb-2">Recommended NPK Levels:</h4>
-            <p><strong>Nitrogen (N):</strong> {displayField(results?.croprDetails?.N)} kg/ha</p>
-            <p><strong>Phosphorus (P):</strong> {displayField(results?.croprDetails?.P)} kg/ha</p>
-            <p><strong>Potassium (K):</strong> {displayField(results?.croprDetails?.K)} kg/ha</p>
-
-            {/* Displaying input data */}
-            <h4 className="font-bold mt-4 mb-2">Input Data:</h4>
+            <p><strong>Nitrogen (N):</strong> {displayField(results?.cropDetails?.N)} kg/ha</p>
+            <p><strong>Phosphorus (P):</strong> {displayField(results?.cropDetails?.P)} kg/ha</p>
+            <p><strong>Potassium (K):</strong> {displayField(results?.cropDetails?.K)} kg/ha</p>
+            {/* <h4 className="font-bold mt-4 mb-2">Input Data:</h4>
             <p><strong>Nitrogen (N) Input:</strong> {displayField(results?.input?.N[0])} kg/ha</p>
             <p><strong>Phosphorus (P) Input:</strong> {displayField(results?.input?.P[0])} kg/ha</p>
             <p><strong>Potassium (K) Input:</strong> {displayField(results?.input?.K[0])} kg/ha</p>
             <p><strong>Temperature:</strong> {displayField(results?.input?.Temperature[0])}°C</p>
             <p><strong>Humidity:</strong> {displayField(results?.input?.Humidity[0])}%</p>
             <p><strong>pH Level:</strong> {displayField(results?.input?.PH[0])}</p>
-            <p><strong>Rainfall:</strong> {displayField(results?.input?.Rainfall[0])} mm</p>
+            <p><strong>Rainfall:</strong> {displayField(results?.input?.Rainfall[0])} mm</p> */}
           </div>
         )}
-
-        {serviceId === 'service2' && (
+            {serviceId === 'service2' && results && (
           <div>
             <h3 className="text-xl font-bold mb-2 underline">Fertilizer Recommendation Results</h3>
 
@@ -88,8 +83,7 @@ const Results = ({ results: propResults }) => {
             <p><strong>Humidity:</strong> {displayField(results?.input?.Humidity)}%</p>
           </div>
         )}
-
-        {serviceId === 'service3' && (
+           {serviceId === 'service3' && (
           <div>
             <h3 className="text-xl font-bold mb-2 underline">Fertilizer Quantity Results</h3>
 
@@ -129,13 +123,15 @@ const Results = ({ results: propResults }) => {
             </div>
           </div>
         )}
+
+        {/* Add similar blocks for serviceId === 'service2' and 'service3' */}
       </div>
     </div>
   );
 };
 
-Results.propTypes = {
-  results: PropTypes.object,
-};
+// Results.propTypes = {
+//   results: PropTypes.object,
+// };
 
 export default Results;
