@@ -67,7 +67,7 @@ const LocationInput = ({ onLocationChange }) => {
       <button
         type="button"
         onClick={handleLocationInput}
-        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-400"
+        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-400 transition-transform transform hover:scale-105 duration-300"
       >
         Find Location
       </button>
