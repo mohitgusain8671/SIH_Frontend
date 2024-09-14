@@ -15,7 +15,7 @@ import Footer from './components/pages/Footer';
 
 import { Service1Form } from './components/Forms/service1Form';
 import {Service2Form} from './components/Forms/service2Form'
-import Service3Form from './components/Forms/service3Form';
+import {Service3Form } from './components/Forms/service3Form';
 import Service2 from './components/serviceDetails/service2';
 import Service1 from './components/serviceDetails/service1';
 import Service3 from './components/serviceDetails/service3';
