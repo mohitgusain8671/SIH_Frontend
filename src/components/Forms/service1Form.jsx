@@ -25,8 +25,9 @@ export const Service1Form = ()=>{
           fertilizer: 'Recommended Fertilizer A',
           quantity: '50 kg per hectare'
         };  
-        try {
-          const response = await axios.post('http://localhost:8080/agroTech/api/v1/crop-predict', recommendations,{
+        try {   //https://agromindsbackend-production.up.railway.app/
+
+          const response = await axios.post('https://agromindsbackend-production.up.railway.app/agroTech/api/v1/crop-predict', recommendations,{
             headers:{
                 'Content-Type': 'application/json',
             }

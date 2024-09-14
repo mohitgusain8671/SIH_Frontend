@@ -31,14 +31,14 @@ export const Service2Form = ()=>{
         quantity: '50 kg per hectare'
       };
       try {
-        const response = await axios.post('http://localhost:8080/agroTech/api/v1/fertilizer-predict', recommendations,{
+        const response = await axios.post('https://agromindsbackend-production.up.railway.app/agroTech/api/v1/fertilizer-predict', recommendations,{
           headers:{
               'Content-Type': 'application/json',
           }
         });
         console.log("Line 30",response);
       //   setResults(response.data);
-        navigate('/results?serviceId=service1', { state: { results: response.data } });
+        navigate('/results?serviceId=service2', { state: { results: response.data } });
       } catch (error) {
         // Handle error
         console.error('There was an error!', error.response ? error.response.data : error.message);

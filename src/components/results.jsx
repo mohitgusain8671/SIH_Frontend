@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
 const Results = () => {
@@ -15,12 +14,15 @@ const Results = () => {
     }
   }, [location.state]);
 
-  const displayField = (value, placeholder = 'Data not available') => value || placeholder;
+  const displayField = (value, placeholder = 'Data not available') => {
+    return value !== null && value !== undefined ? value : placeholder;
+  };
 
   return (
     <div className="flex justify-center items-center py-12 bg-gray-100">
       <div className="w-full max-w-lg bg-white p-8 shadow-lg rounded-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Your Desired Results are Here !!</h2>
+
 
         {serviceId === 'service1' && results && (
           <div>
@@ -42,16 +44,10 @@ const Results = () => {
             <p><strong>Nitrogen (N):</strong> {displayField(results?.cropDetails?.N)} kg/ha</p>
             <p><strong>Phosphorus (P):</strong> {displayField(results?.cropDetails?.P)} kg/ha</p>
             <p><strong>Potassium (K):</strong> {displayField(results?.cropDetails?.K)} kg/ha</p>
-            {/* <h4 className="font-bold mt-4 mb-2">Input Data:</h4>
-            <p><strong>Nitrogen (N) Input:</strong> {displayField(results?.input?.N[0])} kg/ha</p>
-            <p><strong>Phosphorus (P) Input:</strong> {displayField(results?.input?.P[0])} kg/ha</p>
-            <p><strong>Potassium (K) Input:</strong> {displayField(results?.input?.K[0])} kg/ha</p>
-            <p><strong>Temperature:</strong> {displayField(results?.input?.Temperature[0])}°C</p>
-            <p><strong>Humidity:</strong> {displayField(results?.input?.Humidity[0])}%</p>
-            <p><strong>pH Level:</strong> {displayField(results?.input?.PH[0])}</p>
-            <p><strong>Rainfall:</strong> {displayField(results?.input?.Rainfall[0])} mm</p> */}
           </div>
         )}
+
+
             {serviceId === 'service2' && results && (
           <div>
             <h3 className="text-xl font-bold mb-2 underline">Fertilizer Recommendation Results</h3>
@@ -70,27 +66,18 @@ const Results = () => {
               <p><strong>Phosphorus Content:</strong> {displayField(results?.fertilizerDetails?.Phosphorus_Content)}%</p>
               <p><strong>Potassium Content:</strong> {displayField(results?.fertilizerDetails?.Potassium_content)}%</p>
             </div>
-
-            {/* Displaying input data */}
-            <h4 className="font-bold mt-4 mb-2">Input Data:</h4>
-            <p><strong>Moisture:</strong> {displayField(results?.input?.Moisture)}%</p>
-            <p><strong>Soil Type:</strong> {displayField(results?.input?.Soil_Type)}</p>
-            <p><strong>Crop Type:</strong> {displayField(results?.input?.Crop_Type)}</p>
-            <p><strong>Nitrogen:</strong> {displayField(results?.input?.Nitrogen)} kg/ha</p>
-            <p><strong>Potassium:</strong> {displayField(results?.input?.Potassium)} kg/ha</p>
-            <p><strong>Phosphorus:</strong> {displayField(results?.input?.Phosphorous)} kg/ha</p>
-            <p><strong>Temperature:</strong> {displayField(results?.input?.Temperature)}°C</p>
-            <p><strong>Humidity:</strong> {displayField(results?.input?.Humidity)}%</p>
           </div>
         )}
+
+
            {serviceId === 'service3' && (
           <div>
-            <h3 className="text-xl font-bold mb-2 underline">Fertilizer Quantity Results</h3>
+            <h3 className="text-xl font-bold mb-2 underline ml-28">Fertilizer Quantity Results</h3>
 
             {/* Displaying fertilizer quantity results */}
             <div className="mb-4">
-              <h4 className="font-bold mb-2">Fertilizer Amount:</h4>
-              <p><strong>Recommended Amount:</strong> {displayField(results?.FertilizerAmount)}</p>
+              {/* <h4 className="font-bold mb-2">Fertilizer Amount:</h4> */}
+              <p><strong>Recommended Amount of Fertilizer:</strong> {displayField(results?.FertilizerAmount)}</p>
 
               {/* Displaying fertilizer and crop details */}
               <h4 className="font-bold mb-2 mt-4">Fertilizer Details:</h4>
@@ -108,12 +95,13 @@ const Results = () => {
               {/* Displaying crop details */}
               <h4 className="font-bold mb-2 mt-4">Crop Details:</h4>
               <img
-                src={results?.CropDetail?.image || 'https://th.bing.com/th/id/OIP.leUcEChYZIbEsnNYuhNvmAHaE8?rs=1&pid=ImgDetMain'}
+                // src={results?.CropDetail?.image || 'https://th.bing.com/th/id/OIP.leUcEChYZIbEsnNYuhNvmAHaE8?rs=1&pid=ImgDetMain'}
+                src={'https://th.bing.com/th/id/OIP.leUcEChYZIbEsnNYuhNvmAHaE8?rs=1&pid=ImgDetMain'}
                 alt={results?.CropDetail?.name || 'Default Crop'}
                 className="w-full h-40 object-cover rounded-md mb-2"
               />
               <p><strong>Crop Name:</strong> {displayField(results?.CropDetail?.name)}</p>
-              <p><strong>Crop ID:</strong> {displayField(results?.CropDetail?.cropID)}</p>
+              {/* <p><strong>Crop ID:</strong> {displayField(results?.CropDetail?.cropID)}</p> */}
               <p><strong>Optimal pH:</strong> {displayField(results?.CropDetail?.optimal_ph_min)} - {displayField(results?.CropDetail?.optimal_ph_max)}</p>
               <p><strong>Optimal Temperature:</strong> {displayField(results?.CropDetail?.optimal_temp_min)}°C - {displayField(results?.CropDetail?.optimal_temp_max)}°C</p>
               <p><strong>Optimal Moisture:</strong> {displayField(results?.CropDetail?.optimal_moisture_min)}% - {displayField(results?.CropDetail?.optimal_moisture_max)}%</p>
@@ -124,14 +112,10 @@ const Results = () => {
           </div>
         )}
 
-        {/* Add similar blocks for serviceId === 'service2' and 'service3' */}
       </div>
     </div>
   );
 };
 
-// Results.propTypes = {
-//   results: PropTypes.object,
-// };
 
 export default Results;

@@ -1,43 +1,46 @@
 import  { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios'; // Import axios
 
-const Service3Form = ({ setResults }) => {
-  const location = useLocation();
+export const Service3Form = () => {
   const navigate = useNavigate();
-  const query = new URLSearchParams(location.search);
   const serviceId = 3;
 
-
-  const [cropType, setCropType] = useState('');
-  const [fertilizerName, setFertilizerName] = useState('');
+  const [cropName, setcropName] = useState('');
+  const [FertilizerName, setFertilizerName] = useState('');
   const [nitrogenContent, setNitrogenContent] = useState('');
   const [phosphorus, setPhosphorus] = useState('');
   const [potassium, setPotassium] = useState('');
  // New state for location data
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const recommendations = {
-      nitrogenContent,
-      phosphorus,
-      potassium,
-      cropType,
-      fertilizerName,
-      fertilizer: 'Recommended Fertilizer A',
-      quantity: '50 kg per hectare'
-    };  
-    try {
-      const response = await axios.post('http://localhost:8080/agroTech/api/v1/crop-predict', recommendations);
-      // Handle success
-      // setResults(response.data);
-      navigate('/results?serviceId=service1', { state: { results: response.data } });
-    } catch (error) {
-      // Handle error
-      console.error('There was an error!', error);
-    }
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const recommendations = {
+    N2: parseFloat(nitrogenContent),  // Backend expects "N2"
+    P: parseFloat(phosphorus),        // Backend expects "P"
+    k: parseFloat(potassium),         // Backend expects "k"
+    CropName: cropName,               // Backend expects "CropName"
+    FertilizerName,                   // Backend expects "FertilizerName"
   };
+
+  try {
+    const response = await axios.post(
+      'https://agromindsbackend-production.up.railway.app/agroTech/api/v1/calculateFertilizer',
+      recommendations,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    console.log("Response:", response);
+    navigate('/results?serviceId=service3', { state: { results: response.data } });
+  } catch (error) {
+    console.error('There was an error!', error.response ? error.response.data : error.message);
+  }
+};
 
   // Define available crop types
   const cropTypes = [
@@ -121,8 +124,8 @@ const Service3Form = ({ setResults }) => {
             <div className="mb-8">
               <label className="block text-gray-700 text-lg font-bold mb-2 underline">Crop Type</label>
               <select 
-                value={cropType}
-                onChange={(e) => setCropType(e.target.value)}
+                value={cropName}
+                onChange={(e) => setcropName(e.target.value)}
                 className="border rounded w-full py-2 px-3 text-gray-700"
               >
                 <option value="" disabled>Select a crop type</option>
@@ -135,7 +138,7 @@ const Service3Form = ({ setResults }) => {
             <div className="mb-8">
               <label className="block text-gray-700 text-lg font-bold mb-2 underline">Fertilizer Name</label>
               <select 
-                value={fertilizerName}
+                value={FertilizerName}
                 onChange={(e) => setFertilizerName(e.target.value)}
                 className="border rounded w-full py-2 px-3 text-gray-700"
               >
@@ -147,22 +150,17 @@ const Service3Form = ({ setResults }) => {
             </div>          
       
 
-        <div className="flex justify-center">
-          <Link
-            to={`/results?serviceId=${serviceId}`}
-            className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-500 transition-transform transform hover:scale-105 duration-300"
-          >
-            View Results
-          </Link>
-        </div>
+            <div className="flex justify-center">
+            <Link
+                to={`/results?serviceId=service3`}
+                onClick={handleSubmit}
+                className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-500 transition-transform transform hover:scale-105 duration-300"
+              >
+                View Results
+              </Link>
+            </div>
 
       </form>
     </div>
-  );
-};
-
-// Form.propTypes = {
-//   setResults: PropTypes.func.isRequired,
-// };
-
-export default Service3Form;
+  )
+}

@@ -1,7 +1,6 @@
 import  { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/header';
-import Form from './components/Forms/service3Form';
 import Results from './components/results';
 // import Footer from './components/Footer';
 import Navbar from './components/HomePage/navbar';
@@ -14,7 +13,6 @@ import BecomeAMemberPage from './components/pages/BecomeMember';
 import Services from './components/pages/Services';
 import Footer from './components/pages/Footer';
 
-import ServiceDetail from './components/serviceDetails/service1';
 import { Service1Form } from './components/Forms/service1Form';
 import {Service2Form} from './components/Forms/service2Form'
 import Service3Form from './components/Forms/service3Form';
