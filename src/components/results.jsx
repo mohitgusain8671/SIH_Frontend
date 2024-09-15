@@ -29,7 +29,7 @@ const Results = () => {
             <h3 className="text-xl font-bold mb-2 underline">Crop Recommendation Results</h3>
             <div className="mb-4">
               <img
-                src={ 'https://th.bing.com/th/id/OIP.kT5qPhJt1MQS1DIXbd2ZMgHaE7?rs=1&pid=ImgDetMain'}
+                src={ results?.cropDetails?.image || 'https://th.bing.com/th/id/OIP.kT5qPhJt1MQS1DIXbd2ZMgHaE7?rs=1&pid=ImgDetMain'}
                 alt={results?.cropDetails?.name || 'Default Crop'}
                 className="w-full h-40 object-cover rounded-md mb-2"
               />
@@ -95,8 +95,8 @@ const Results = () => {
               {/* Displaying crop details */}
               <h4 className="font-bold mb-2 mt-4">Crop Details:</h4>
               <img
-                // src={results?.CropDetail?.image || 'https://th.bing.com/th/id/OIP.leUcEChYZIbEsnNYuhNvmAHaE8?rs=1&pid=ImgDetMain'}
-                src={'https://th.bing.com/th/id/OIP.leUcEChYZIbEsnNYuhNvmAHaE8?rs=1&pid=ImgDetMain'}
+                src={results?.CropDetail?.image || 'https://th.bing.com/th/id/OIP.leUcEChYZIbEsnNYuhNvmAHaE8?rs=1&pid=ImgDetMain'}
+                // src={'https://th.bing.com/th/id/OIP.leUcEChYZIbEsnNYuhNvmAHaE8?rs=1&pid=ImgDetMain'}
                 alt={results?.CropDetail?.name || 'Default Crop'}
                 className="w-full h-40 object-cover rounded-md mb-2"
               />
